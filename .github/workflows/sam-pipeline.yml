@@ -27,8 +27,8 @@ jobs:
       # sam build 
       - run: ls
       - run: echo "WORKSPACE - ${{ github.workspace }}"
-      - run: cd /home/runner/work/first_aws_lambda/first_aws_lambda/; ls
-      - run: sam build --use-container --template-file  /home/runner/work/first_aws_lambda/github-actions-with-aws-sam/template.yml
+      - run: cd /home/runner/work/first_aws_lambda/first_aws_lambda/github-actions-with-aws-sam/; ls
+      - run: sam build --use-container --template-file  /home/runner/work/first_aws_lambda/first_aws_lambda/github-actions-with-aws-sam/template.yml
 
 # Run Unit tests- Specify unit tests here 
 
