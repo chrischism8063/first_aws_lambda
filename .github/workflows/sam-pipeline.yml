@@ -25,6 +25,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
       # sam build 
+      - run: echo "ls -lah"
       - run: sam build --use-container --template-file  /home/runner/work/first_aws_lambda/github-actions-with-aws-sam/template.yml
 
 # Run Unit tests- Specify unit tests here 
