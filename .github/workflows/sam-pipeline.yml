@@ -25,10 +25,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
       # sam build 
-      - run: ls
-      - run: echo "WORKSPACE - ${{ github.workspace }}"
-      - run: cd /home/runner/work/first_aws_lambda/first_aws_lambda/github-actions-with-aws-sam/; ls
-      - run: sam build --use-container --template-file  /home/runner/work/first_aws_lambda/first_aws_lambda/github-actions-with-aws-sam/template.yml
+      - run: sam build --use-container --template-file  /home/runner/work/first_aws_lambda/first_aws_lambda/github-actions-with-aws-sam/template.yaml
 
 # Run Unit tests- Specify unit tests here 
 
