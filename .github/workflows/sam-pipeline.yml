@@ -1,20 +1,15 @@
+# The GitHub Actions CI/CD pipeline requires AWS credentials to access your AWS account. The credentials must include AWS Identity and Access Management (IAM) policies that provide access to Lambda, API Gateway, AWS CloudFormation, S3, and IAM resources.
+# ref: https://aws.amazon.com/blogs/compute/using-github-actions-to-deploy-serverless-applications/
+
+
 on:
-  workflow_call: # allows calling this workflow from another workflow
-    secrets:
-      AWS_ACCESS_KEY_ID: { required: true }
-      AWS_SECRET_ACCESS_KEY: { required: true }
   push:
     branches:
       - master
-# permissions:
-#       id-token: write   # This is required for requesting the JWT
-#       contents: read  
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "Testing vars in Github ${{ github.env.MY_VARIABLE }}"
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: aws-actions/setup-sam@v1
@@ -24,14 +19,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
       # sam build 
-      - run: sam build --use-container --template-file /home/runner/work/first_aws_lambda/first_aws_lambda/github-actions-with-aws-sam/template.yaml
+      - run: sam build --use-container
 
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
-      # - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world --s3-bucket my-first-bucket-09292024 --capabilities CAPABILITY_IAM --region us-west-2
-
-
-
-
-      
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world --s3-bucket my-first-bucket-chism-10012024 --capabilities CAPABILITY_IAM --region us-west-2
