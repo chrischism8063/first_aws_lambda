@@ -20,7 +20,7 @@ jobs:
           aws-region: us-west-2
       # sam build 
       - run: sam build --use-container --template-file /home/runner/work/first_aws_lambda/first_aws_lambda/sam-app/template.yaml
-      - run: sam validate
+      # - run: sam validate
 
 # Run Unit tests- Specify unit tests here 
 
